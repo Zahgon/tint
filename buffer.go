@@ -11,30 +11,16 @@ var bufPool = sync.Pool{
 	},
 }
 
-func newBuffer() *buffer {
-	return bufPool.Get().(*buffer)
-}
+func newBuffer() *buffer { _ = "STUB: not implemented"; return nil }
 
 func (b *buffer) Free() {
+	_ = "STUB: not implemented"
 	// To reduce peak allocation, return only smaller buffers to the pool.
-	const maxBufferSize = 16 << 10
-	if cap(*b) <= maxBufferSize {
-		*b = (*b)[:0]
-		bufPool.Put(b)
-	}
+	return
 }
 
-func (b *buffer) Write(bytes []byte) (int, error) {
-	*b = append(*b, bytes...)
-	return len(bytes), nil
-}
+func (b *buffer) Write(bytes []byte) (int, error) { _ = "STUB: not implemented"; return 0, nil }
 
-func (b *buffer) WriteByte(char byte) error {
-	*b = append(*b, char)
-	return nil
-}
+func (b *buffer) WriteByte(char byte) error { _ = "STUB: not implemented"; return nil }
 
-func (b *buffer) WriteString(str string) (int, error) {
-	*b = append(*b, str...)
-	return len(str), nil
-}
+func (b *buffer) WriteString(str string) (int, error) { _ = "STUB: not implemented"; return 0, nil }
